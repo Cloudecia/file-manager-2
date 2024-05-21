@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src_bckp"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "node_modules/@types"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

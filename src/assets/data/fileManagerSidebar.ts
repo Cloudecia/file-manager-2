@@ -14,7 +14,7 @@ const sidebar = [
       },
       {
         id: 0,
-        url: "/",
+        url: "/r",
         title: "Root",
         icon: BiSolidDashboard,
       },
@@ -26,13 +26,13 @@ const sidebar = [
     children: [
       {
         id: 21,
-        url: "/",
+        url: "/rr",
         title: "Recent",
         icon: BsWindowFullscreen,
       },
       {
         id: 22,
-        url: "/",
+        url: "/f",
         title: "Favourites",
         icon: BsWindowFullscreen,
       },
@@ -44,19 +44,19 @@ const sidebar = [
     children: [
       {
         id: 31,
-        url: "/",
+        url: "/q",
         title: "Quarantine",
         icon: BsWindowFullscreen,
       },
       {
         id: 32,
-        url: "/",
+        url: "/t",
         title: "Trash",
         icon: BsWindowFullscreen,
       },
       {
         id: 33,
-        url: "/",
+        url: "/s",
         title: "Storage",
         icon: BsWindowFullscreen,
       },

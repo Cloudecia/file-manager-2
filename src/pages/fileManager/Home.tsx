@@ -485,7 +485,7 @@ const Home = () => {
   const [gridView, setGridView] = useState(false);
 
   return (
-    <Container>
+    <Container className="my-8">
       <SectionWrapper noDivider classes={"flex flex-row justify-between"}>
         <Breadcrumb>
           <BreadcrumbList>

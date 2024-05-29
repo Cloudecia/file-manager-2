@@ -6,9 +6,17 @@ interface ILogoProps {
   textFontSize?: number;
   textColor?: "brand-500" | "white";
   textLeading?: string;
+  isCollapsed: boolean;
 }
 
-const Logo = ({ logoWidth = 24, textFontSize = 12, textColor = "brand-500", textLeading = "58%", logoFillColor = "#04598a" }: ILogoProps) => {
+const Logo = ({
+  logoWidth = 24,
+  textFontSize = 12,
+  textColor = "brand-500",
+  textLeading = "58%",
+  logoFillColor = "#04598a",
+  isCollapsed = false,
+}: ILogoProps) => {
   return (
     <div className="flex gap-1 items-baseline justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width={logoWidth} viewBox="0 0 40 30">
@@ -21,7 +29,7 @@ const Logo = ({ logoWidth = 24, textFontSize = 12, textColor = "brand-500", text
           />
         </g>
       </svg>
-      <span className={`text-${textColor} font-bold leading-[${textLeading}] text-[${textFontSize}px]`}>CLOUDECIA</span>
+      {!isCollapsed && <span className={`text-${textColor} font-bold leading-[${textLeading}] text-[${textFontSize}px]`}>CLOUDECIA</span>}
     </div>
   );
 };

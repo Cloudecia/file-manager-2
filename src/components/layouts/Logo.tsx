@@ -1,29 +1,29 @@
-import { Link } from "react-router-dom";
-import LogoEl from "@/components/elements/Logo";
-import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
-import useFileManagerSidebar from "@/hooks/useFileManagerSidebar";
-const Logo = () => {
+import { GiHamburgerMenu } from "react-icons/gi";
+import useFileManagerSidebar from "../../hooks/useFileManagerSidebar";
+import LogoEl from "../elements/Logo";
+import { cn } from "../../utils/shadcn-helper";
+const Logo = ({ isCollapsed }: { isCollapsed: true }) => {
   const fileManagerSidebar = useFileManagerSidebar();
 
   return (
     <>
-      <div className="flex justify-between xl:justify-center items-center px-7">
-        <Link to="/" className="font-bold flex gap-1 items-baseline justify-center text-lg relative top-[2px] text-zinc-100">
-          <LogoEl logoWidth={24} textFontSize={24} logoFillColor="#ffffff" textColor="white" />
-        </Link>
-        <div className="xl:hidden">
-          {fileManagerSidebar.isCollapsed ? (
-            <GoSidebarCollapse
-              className="h-4 w-4  [&_*]:text-zinc-100"
+      <div className={cn("flex items-center px-2 py-6 grow", isCollapsed ? "justify-center" : "justify-between")}>
+        <div
+          className={cn("font-bold flex gap-1 items-baseline text-lg relative top-[2px] text-zinc-100")}
+          onClick={() => {
+            if (fileManagerSidebar.isCollapsed) {
+              fileManagerSidebar.onOpen();
+            }
+          }}
+        >
+          <LogoEl logoWidth={24} textFontSize={24} logoFillColor="#04598a" textColor="brand-500" isCollapsed={fileManagerSidebar.isCollapsed} />
+        </div>
+        <div className="xl">
+          {!fileManagerSidebar.isCollapsed && (
+            <GiHamburgerMenu
+              className="h-4 w-4  [&_*]:text-brand-500 cursor-pointer"
               onClick={() => {
-                fileManagerSidebar.onOpen();
-              }}
-            />
-          ) : (
-            <GoSidebarExpand
-              className="h-4 w-4 [&_*]:text-zinc-100"
-              onClick={() => {
-                fileManagerSidebar.onCollapse();
+                fileManagerSidebar.onToggle();
               }}
             />
           )}

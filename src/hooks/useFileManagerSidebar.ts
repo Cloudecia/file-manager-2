@@ -1,6 +1,13 @@
 import { create } from "zustand";
 
-const useFileManagerSidebar = create((set) => ({
+interface IUseFileManagerSidebar {
+  isCollapsed: boolean;
+  onOpen: () => void;
+  onCollapse: () => void;
+  onToggle: () => void;
+}
+
+const useFileManagerSidebar = create<IUseFileManagerSidebar>((set) => ({
   isCollapsed: true,
   onOpen: () => set({ isCollapsed: false }),
   onCollapse: () => set({ isCollapsed: true }),

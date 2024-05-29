@@ -39,7 +39,7 @@ export default function DashboardHeaderSearchbar() {
                   {...field}
                   className={cn(
                     "h-[2.4rem] border-x-transparent border-t-transparent rounded-none shadow-none focus-visible:ring-0",
-                    "border-b-[1px] border-solid p-0 w-full sm:w-2/3"
+                    "border-b-[1px] border-solid border-b-brand-500/30  p-0 w-full sm:w-2/3"
                   )}
                 />
               </FormControl>

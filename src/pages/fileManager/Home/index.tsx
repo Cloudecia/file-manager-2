@@ -3,7 +3,7 @@ import Container from "@/components/reusables/Container";
 import SectionWrapper from "@/components/reusables/SectionWrapper";
 import { createColumnHelper } from "@tanstack/react-table";
 import { useState } from "react";
-
+import FileInfo from "../../../components/sections/FileInfo";
 import GridListViewPicker from "../../../components/elements/GridListViewPicker";
 import MainBreadCrumbs from "../../../components/elements/MainBreadCrumbs";
 import DataTable from "../../../components/sections/FileManagerDataTable";
@@ -20,9 +20,12 @@ const Home = () => {
         <GridListViewPicker {...{ gridView, setGridView }} />
       </SectionWrapper>
 
-      <SectionWrapper>
-        <DataTable columns={columns} data={fileList} view={gridView} />
-      </SectionWrapper>
+      <div className="flex gap-4">
+        <SectionWrapper classes="grow py-2">
+          <DataTable columns={columns} data={fileList} view={gridView} />
+        </SectionWrapper>
+        <FileInfo className="sm:basis-[320px] md:basis-[320px] xl:basis-[335px] bg-brand-25 rounded-lg py-5" />
+      </div>
       <Test />
     </Container>
   );

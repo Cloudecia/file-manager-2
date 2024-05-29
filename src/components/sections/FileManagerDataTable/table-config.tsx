@@ -43,9 +43,9 @@ export const columns = [
   }),
   columnHelper.accessor((row) => row.attributes.lastModifiedOn, {
     id: "lastModifiedOn",
-    header: () => <span className="hidden  sm:inline-block  ">Last Modified</span>,
+    header: () => <span className="hidden  lg:inline-block  ">Last Modified</span>,
     cell: (props) => (
-      <span className="hidden sm:inline-block">
+      <span className="hidden lg:inline-block">
         {formatDistanceToNow(new Date(props.getValue()), {
           includeSeconds: true,
           addSuffix: true,

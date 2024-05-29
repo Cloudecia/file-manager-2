@@ -28,8 +28,8 @@ const SideNav = ({ isCollapsed }) => {
                             key={id}
                             to={url}
                             className={cn(
-                              `rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  text-secondary-foreground hover:bg-zinc-200/50  justify-start text-ellipsis bg-transparent px-3 grid place-content-center py-2`,
-                              isActive ? "bg-zinc-100 shadow-sm " : "shadow-none"
+                              `rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  text-secondary-foreground hover:bg-brand-200/50  justify-start text-ellipsis bg-transparent px-3 grid place-content-center py-2`,
+                              isActive ? "bg-brand-200/20 shadow-lg " : "shadow-none"
                             )}
                           >
                             {" "}
@@ -39,8 +39,8 @@ const SideNav = ({ isCollapsed }) => {
                           <Link
                             key={id}
                             to={url}
-                            className={`flex gap-4 items-center whitespace-nowrap rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  text-secondary-foreground hover:bg-brand-200/15 h-9 py-2 w-full justify-start overflow-hidden text-ellipsis bg-transparent px-3 ${
-                              isActive ? "bg-brand-200/40 shadow-sm " : "shadow-none"
+                            className={`flex gap-4 items-center whitespace-nowrap rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  text-secondary-foreground hover:bg-brand-200/50 h-9 py-2 w-full justify-start overflow-hidden text-ellipsis bg-transparent px-3 ${
+                              isActive ? "bg-brand-200/20 shadow-lg " : "shadow-none"
                             }`}
                           >
                             {" "}

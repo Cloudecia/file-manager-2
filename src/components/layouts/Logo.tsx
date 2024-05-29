@@ -2,16 +2,22 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import useFileManagerSidebar from "../../hooks/useFileManagerSidebar";
 import LogoEl from "../elements/Logo";
 import { cn } from "../../utils/shadcn-helper";
+import useDeviceSizeCheck from "../../hooks/useDeviceSizeCheck";
+import { useEffect } from "react";
 const Logo = ({ isCollapsed }: { isCollapsed: true }) => {
   const fileManagerSidebar = useFileManagerSidebar();
+  const { isSm } = useDeviceSizeCheck();
 
+  useEffect(() => {
+    console.log({ isSm });
+  });
   return (
     <>
-      <div className={cn("flex items-center px-2 py-6 grow", isCollapsed ? "justify-center" : "justify-between")}>
+      <div className={cn("flex items-center px-2 py-6", isCollapsed ? "justify-center" : "justify-between")}>
         <div
           className={cn("font-bold flex gap-1 items-baseline text-lg relative top-[2px] text-zinc-100")}
           onClick={() => {
-            if (fileManagerSidebar.isCollapsed) {
+            if (fileManagerSidebar.isCollapsed && isSm) {
               fileManagerSidebar.onOpen();
             }
           }}

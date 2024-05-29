@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ILogoProps {
   logoWidth?: number;
   logoFillColor?: "#04598a" | "#ffffff";

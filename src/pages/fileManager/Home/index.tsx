@@ -13,7 +13,7 @@ const Home = () => {
   const [gridView, setGridView] = useState(false);
 
   return (
-    <Container className="my-8">
+    <Container className="my-4 sm:my-8">
       <SectionWrapper noDivider classes={"flex flex-row justify-between"}>
         <MainBreadCrumbs />
         {/* todo 240530 - grid view work left */}

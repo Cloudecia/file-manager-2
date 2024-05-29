@@ -8,7 +8,7 @@ import NewFolderDialogBox from "../../elements/NewFolderDialogBox";
 
 export default function DataTablePreStartSection({ table }) {
   return (
-    <div className="flex flex-col md:flex-row  items-center justify-between gap-4 mb-4">
+    <div className="flex flex-col md:flex-row  items-center justify-between gap-4 mb-4 px-2 sm:px-0">
       <Input
         placeholder="Filter by filename"
         value={(table.getColumn("fileName")?.getFilterValue() as string) ?? ""}

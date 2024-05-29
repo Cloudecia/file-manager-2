@@ -6,7 +6,7 @@ const SectionWrapper = ({ heading, children, styles, classes, noDivider, headerC
   return (
     <>
       <section
-        className={cn(`flex flex-col gap-6 pb-10`, `${!noDivider && "border-blue border-b-2"}`, classes)}
+        className={cn(`flex flex-col gap-6 pb-4 sm:pb-10`, `${!noDivider && "border-blue border-b-2"}`, classes)}
         style={{ boxShadow: !noDivider ? "0px 2px 0px 0px rgba(151, 196, 221,1)" : null, ...styles }}
       >
         {heading && <SectionHeading classes={headerClasses}>{heading}</SectionHeading>}

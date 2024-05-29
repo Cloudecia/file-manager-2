@@ -15,7 +15,7 @@ type Props = {};
 
 const MainBreadCrumbs = (props: Props) => {
   return (
-    <>
+    <div className="px-2 sm:0">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -50,7 +50,7 @@ const MainBreadCrumbs = (props: Props) => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "../sections/FileManagerHeader";
 import CopyrightFooter from "../sections/CopyrightFooter";
+import Sidebar from "../sections/FileManagerSidebar";
 
 function UserDashboardLayout() {
   return (

@@ -1,16 +1,15 @@
 import { GiHamburgerMenu } from "react-icons/gi";
-import useFileManagerSidebar from "../../hooks/useFileManagerSidebar";
-import LogoEl from "../elements/Logo";
-import { cn } from "../../utils/shadcn-helper";
 import useDeviceSizeCheck from "../../hooks/useDeviceSizeCheck";
-import { useEffect } from "react";
+import useFileManagerSidebar from "../../hooks/useFileManagerSidebar";
+import { cn } from "../../utils/shadcn-helper";
+import LogoEl from "../elements/Logo";
 const Logo = ({ isCollapsed }: { isCollapsed: true }) => {
   const fileManagerSidebar = useFileManagerSidebar();
   const { isSm } = useDeviceSizeCheck();
 
-  useEffect(() => {
-    console.log({ isSm });
-  });
+  // useEffect(() => {
+  //   console.log({ isSm });
+  // });
   return (
     <>
       <div className={cn("flex items-center px-2 py-6", isCollapsed ? "justify-center" : "justify-between")}>

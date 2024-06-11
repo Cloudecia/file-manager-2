@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { queryClient } from "../../config/tanstack-query/queryClient";
 import { axiosInstance } from "../../config/axios";
-import { endpoints } from "../../config/axios/constants";
+import { endpoints } from "../../config/constants/endpoints";
 
 interface ICopyFileHandler {
   fileIds: string[];

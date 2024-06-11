@@ -9,7 +9,13 @@ import useFileId from "../../hooks/zustand-hooks/useFileId";
 import { DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "../reusables/ui/dropdown-menu";
 import DeleteDialogBox from "./DeleteDialogBox";
 import RenameDialogBox from "./RenameDialogBox";
-
+import { useLocation } from "react-router-dom";
+import browserPaths from "../../config/constants/browsePaths";
+import useIsPathnameMatched from "../../hooks/useIsPathnameMatched";
+import { LiaTrashRestoreAltSolid } from "react-icons/lia";
+import { MdDeleteForever } from "react-icons/md";
+import { useRestoreFromTrash } from "../../hooks/tanstack-query-hooks/useRestoreFromTrash";
+import { useSendToTrash } from "../../hooks/tanstack-query-hooks/useSendToTrash";
 export default function RowActionsDropDown({ data }) {
   // console.log({ data });
 
@@ -18,8 +24,62 @@ export default function RowActionsDropDown({ data }) {
   const { moveFileFn } = useMoveFile();
   const downloadFileFn = useDownloadFile();
 
-  const { fileInfo, isLoading, fileInfoFetcher } = useGetFileInfo(data);
+  const isTrash = useIsPathnameMatched(browserPaths.trash);
+
+  // console.log({ pathname });
+
+  // if (isTrash) {
+  //   console.log("trash");
+  // } else {
+  //   console.log("normal");
+  // }
+
+  return (
+    <DropdownMenuContent align="end" className="min-w-52">
+      {isTrash ? (
+        <>
+          <TrashRowActions data={data} />
+        </>
+      ) : (
+        <>
+          <FileManagerActions data={data} />
+        </>
+      )}
+    </DropdownMenuContent>
+  );
+}
+
+const TrashRowActions = ({ data }) => {
+  const { restoreFromTrashFn } = useRestoreFromTrash();
+
+  const restoreFromTrashHandler = async () => {
+    restoreFromTrashFn(data.fileId);
+  };
+
+  return (
+    <>
+      <DropdownMenuItem className="flex gap-2 items-center cursor-pointer" onClick={restoreFromTrashHandler}>
+        <LiaTrashRestoreAltSolid /> Restore
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+
+      <DeleteDialogBox data={data}>
+        <DropdownMenuItem onSelect={(e) => e.preventDefault()} className="flex gap-2 items-center cursor-pointer">
+          <MdDeleteForever /> Remove
+        </DropdownMenuItem>
+      </DeleteDialogBox>
+    </>
+  );
+};
+
+const FileManagerActions = ({ data }) => {
   const fileCutCopy = useFileCutCopy();
+
+  const { sendToTrashFn } = useSendToTrash();
+
+  const deleteFileHandler = async () => {
+    await sendToTrashFn(data.fileId);
+  };
 
   async function fileInfoHandler() {
     fileIdAdd.onAddId(data.fileId);
@@ -63,10 +123,8 @@ export default function RowActionsDropDown({ data }) {
   //   console.log({ op: fileCutCopy.op, fileId: fileCutCopy.fileId, parentId: fileCutCopy.parentId });
   // }, [fileCutCopy.op, fileCutCopy.fileId, fileCutCopy.parentId]);
 
-  if (isLoading) return "loading";
-
   return (
-    <DropdownMenuContent align="end" className="min-w-52">
+    <>
       <DropdownMenuItem className="flex gap-2 items-center cursor-pointer" onClick={fileInfoHandler}>
         <TbInfoCircleFilled /> File Information
       </DropdownMenuItem>
@@ -90,14 +148,15 @@ export default function RowActionsDropDown({ data }) {
         <TbCopyPlus /> Copy
       </DropdownMenuItem>
       {/* <DropdownMenuItem className="flex gap-2 items-center cursor-pointer" onClick={(e) => pasteHandler(e)}>
-        <ImPaste /> Paste
-      </DropdownMenuItem> */}
+    <ImPaste /> Paste
+  </DropdownMenuItem> */}
       <DropdownMenuSeparator />
-      <DeleteDialogBox data={data}>
-        <DropdownMenuItem onSelect={(e) => e.preventDefault()} className="flex gap-2 items-center cursor-pointer">
-          <MdOutlineDelete /> Delete
-        </DropdownMenuItem>
-      </DeleteDialogBox>
-    </DropdownMenuContent>
+
+      <DropdownMenuItem onSelect={deleteFileHandler} className="flex gap-2 items-center cursor-pointer">
+        <MdOutlineDelete /> Delete
+      </DropdownMenuItem>
+    </>
   );
-}
+};
+
+const CommonActions = () => {};

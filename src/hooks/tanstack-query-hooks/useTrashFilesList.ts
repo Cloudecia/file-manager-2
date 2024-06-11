@@ -3,13 +3,11 @@ import axios, { AxiosResponse } from "axios";
 import { axiosInstance } from "../../config/axios";
 import { endpoints } from "../../config/constants/endpoints";
 
-async function getFilesList(parentFolderId) {
-  // console.log({ parentFolderId });
-
+async function getFilesList() {
   try {
     const { data } = await axiosInstance({
-      method: endpoints.listAllFilesInAFolder.method,
-      url: endpoints.listAllFilesInAFolder.fn(parentFolderId),
+      method: endpoints.getTrashedFiles.method,
+      url: endpoints.getTrashedFiles.fn(),
     });
 
     console.log({ data });
@@ -20,14 +18,10 @@ async function getFilesList(parentFolderId) {
   }
 }
 
-export function useFilesList(parentFolderId) {
-  let parent = parentFolderId ? parentFolderId : "root";
-
-  // console.log({ parent });
-
+export function useTrashFileList() {
   const { data: files, isLoading } = useQuery({
-    queryKey: ["fileList", parent],
-    queryFn: () => getFilesList(parent),
+    queryKey: ["fileList"],
+    queryFn: getFilesList,
   });
 
   return { files, isLoading };

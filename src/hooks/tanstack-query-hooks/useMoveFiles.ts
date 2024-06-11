@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../config/axios";
-import { endpoints } from "../../config/axios/constants";
+import { endpoints } from "../../config/constants/endpoints";
 import { queryClient } from "../../config/tanstack-query/queryClient";
 
 interface IMoveFileHandler {

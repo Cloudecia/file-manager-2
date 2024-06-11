@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { axiosInstance } from "../../config/axios";
-import { endpoints } from "../../config/axios/constants";
+import { endpoints } from "../../config/constants/endpoints";
 
 function useDownloadFile() {
   return async (fileId) => {

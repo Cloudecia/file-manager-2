@@ -13,7 +13,7 @@ export interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export default function DataTable<TData, TValue>({ columns, data, view }: DataTableProps<TData, Tvalue>) {
+export default function MainDataTable<TData, TValue>({ columns, data, view }: DataTableProps<TData, Tvalue>) {
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);

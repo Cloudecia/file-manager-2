@@ -4,22 +4,22 @@ import { queryClient } from "../../config/tanstack-query/queryClient";
 import { axiosInstance } from "../../config/axios";
 import { endpoints } from "../../config/constants/endpoints";
 
-async function sendToTrashHandler(id) {
+async function restoreFromTrashHandler(id) {
   try {
     await axiosInstance({
-      url: endpoints.sendToTrash.fn(id),
-      method: endpoints.sendToTrash.method,
+      url: endpoints.restoreFromTrash.fn(id),
+      method: endpoints.restoreFromTrash.method,
     });
   } catch (error) {
     console.log({ error });
   }
 }
 
-export function useSendToTrash() {
+export function useRestoreFromTrash() {
   const { mutate } = useMutation({
-    mutationFn: sendToTrashHandler,
+    mutationFn: restoreFromTrashHandler,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["fileList"] }),
   });
 
-  return { sendToTrashFn: mutate };
+  return { restoreFromTrashFn: mutate };
 }

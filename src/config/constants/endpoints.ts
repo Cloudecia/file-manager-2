@@ -22,12 +22,16 @@ export const endpoints = {
     fn: (fileId: string) => `/file/${fileId}/send-to-trash`,
     method: "put",
   },
-  restroreFromTrash: {
+  deleteFromTrash: {
+    fn: (fileId: string) => `/file/${fileId}/delete-from-trash`,
+    method: "delete",
+  },
+  restoreFromTrash: {
     fn: (fileId: string) => `/file/${fileId}/restore-from-trash`,
     method: "put",
   },
   getTrashedFiles: {
-    fn: () => `/files/trashed/all`,
+    fn: () => `/files/trashed`,
     method: "get",
   },
   removeFromTrash: {

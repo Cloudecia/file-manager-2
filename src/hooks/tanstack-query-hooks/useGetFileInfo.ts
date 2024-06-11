@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { axiosInstance } from "../../config/axios";
-import { endpoints } from "../../config/axios/constants";
+import { endpoints } from "../../config/constants/endpoints";
 
 async function getFileInfo({ fileId }) {
   try {

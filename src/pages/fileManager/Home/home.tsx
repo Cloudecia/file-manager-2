@@ -3,9 +3,9 @@ import SectionWrapper from "@/components/reusables/SectionWrapper";
 import { createColumnHelper } from "@tanstack/react-table";
 import { useState } from "react";
 import GridListViewPicker from "../../../components/elements/GridListViewPicker";
-import MainBreadCrumbs from "../../../components/elements/MainBreadCrumbs";
+import MainBreadCrumbs from "../../../components/elements/BreadCrumbs/MainBreadCrumbs";
 import FileInfo from "../../../components/sections/FileInfo";
-import DataTable from "../../../components/sections/FileManagerDataTable";
+import MainDataTable from "../../../components/sections/FileManagerDataTable/MainDataTable";
 import { columns } from "../../../components/sections/FileManagerDataTable/main-view-table-config";
 import { useFilesList } from "../../../hooks/tanstack-query-hooks/useFilesList";
 import useRouteParent from "../../../hooks/useRouteParent";
@@ -51,7 +51,7 @@ const Home = () => {
 
         <div className="flex gap-4">
           <SectionWrapper classes="grow py-2">
-            <DataTable columns={columns} data={files} view={gridView} />
+            <MainDataTable columns={columns} data={files} view={gridView} />
           </SectionWrapper>
           <FileInfo className="sm:basis-[320px] md:basis-[320px] xl:basis-[335px] bg-brand-25 rounded-lg py-5" />
         </div>

@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../config/tanstack-query/queryClient";
 import axios from "axios";
 import { axiosInstance } from "../../config/axios";
-import { endpoints } from "../../config/axios/constants";
+import { endpoints } from "../../config/constants/endpoints";
 import sleep from "../../utils/sleep";
 
 async function createFolderHandler(payload) {

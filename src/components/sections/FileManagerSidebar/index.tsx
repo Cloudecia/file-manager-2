@@ -1,6 +1,6 @@
 import Logo from "../../layouts/Logo";
 // import Search from './Search';
-import useFileManagerSidebar from "../../../hooks/useFileManagerSidebar";
+import useFileManagerSidebar from "../../../hooks/zustand-hooks/useFileManagerSidebar";
 import { cn } from "../../../utils/shadcn-helper";
 import FooterSideNav from "./FooterSideNav";
 import SideNav from "./SideNav";

@@ -12,7 +12,7 @@ export default function ProgressRing(props: { radius: number; strokeWidth?: numb
 
   const strokeDashoffset = circumference - (progress * circumference) / 100;
 
-  console.log({ radius, strokeWidth, normalizedRadius, circumference, strokeDashoffset });
+  // console.log({ radius, strokeWidth, normalizedRadius, circumference, strokeDashoffset });
 
   return (
     <svg height={radius * 2} width={radius * 2}>

@@ -6,8 +6,8 @@ const SideNav = ({ isCollapsed }) => {
   return (
     <>
       <div className={cn(isCollapsed ? "flex flex-col items-center h-full" : "px-2")}>
-        {sidebar.map((item) => {
-          return <SidebarMenuGroup item={item} isCollapsed={isCollapsed} />;
+        {sidebar.map((item, idx) => {
+          return <SidebarMenuGroup item={item} isCollapsed={isCollapsed} key={idx} />;
         })}
       </div>
     </>

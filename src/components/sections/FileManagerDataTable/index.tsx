@@ -6,6 +6,7 @@ import DataTableNoRows from "./DataTableNoRows";
 import DataTablePostFinishSection from "./DataTablePostFinishSection";
 import DataTablePreStartSection from "./DataTablePreStartSection";
 import DataTableRowSingle from "./DataTableRowSingle";
+import DataTableMainSection from "./DataTableMainSection";
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -73,28 +74,7 @@ export default function DataTable<TData, TValue>({ columns, data, view }: DataTa
       )}
       <div className="relative flex-col gap-4">
         <DataTablePreStartSection table={table} />
-        <Table>
-          <TableHeader className={view && "hidden"}>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} className={`${header.column.columnDef?.meta && header.column.columnDef.meta?.className}`}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody className={view && "grid grid-cols-4"}>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => <DataTableRowSingle row={row} view={view} />)
-            ) : (
-              <DataTableNoRows columns={columns} />
-            )}
-          </TableBody>
-        </Table>
+        <DataTableMainSection table={table} view={view} columns={columns} />
         <DataTablePostFinishSection table={table} />
       </div>
     </main>

@@ -1,6 +1,6 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import useDeviceSizeCheck from "../../hooks/useDeviceSizeCheck";
-import useFileManagerSidebar from "../../hooks/useFileManagerSidebar";
+import useFileManagerSidebar from "../../hooks/zustand-hooks/useFileManagerSidebar";
 import { cn } from "../../utils/shadcn-helper";
 import LogoEl from "../elements/Logo";
 const Logo = ({ isCollapsed }: { isCollapsed: true }) => {

@@ -16,10 +16,10 @@ import { LiaTrashRestoreAltSolid } from "react-icons/lia";
 import { MdDeleteForever } from "react-icons/md";
 import { useRestoreFromTrash } from "../../hooks/tanstack-query-hooks/useRestoreFromTrash";
 import { useSendToTrash } from "../../hooks/tanstack-query-hooks/useSendToTrash";
+import useFileInfoBox from "../../hooks/zustand-hooks/useFileInfoBox";
 export default function RowActionsDropDown({ data }) {
   // console.log({ data });
 
-  const fileIdAdd = useFileId();
   const { copyFileFn } = useCopyFile();
   const { moveFileFn } = useMoveFile();
   const downloadFileFn = useDownloadFile();
@@ -73,6 +73,11 @@ const TrashRowActions = ({ data }) => {
 };
 
 const FileManagerActions = ({ data }) => {
+  const { fileInfoFetcher } = useGetFileInfo();
+  const { onOpen: openFileInfoBox } = useFileInfoBox();
+
+  const fileIdAdd = useFileId();
+
   const fileCutCopy = useFileCutCopy();
 
   const { sendToTrashFn } = useSendToTrash();
@@ -82,10 +87,12 @@ const FileManagerActions = ({ data }) => {
   };
 
   async function fileInfoHandler() {
+    openFileInfoBox();
     fileIdAdd.onAddId(data.fileId);
-
     try {
       await fileInfoFetcher();
+
+      openFileInfoBox();
     } catch (error) {
       console.log({ error });
     }

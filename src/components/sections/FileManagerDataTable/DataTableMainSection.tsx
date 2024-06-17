@@ -16,7 +16,7 @@ const DataTableMainSection = ({ table, view, columns }) => {
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
               return (
-                <TableHead key={header.id} className={`${header.column.columnDef?.meta && header.column.columnDef.meta?.className}`}>
+                <TableHead key={header.id} className={`${header.column.columnDef?.meta ? header.column.columnDef.meta?.className : undefined}`}>
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </TableHead>
               );
@@ -26,7 +26,7 @@ const DataTableMainSection = ({ table, view, columns }) => {
       </TableHeader>
       <TableBody className={view && "grid grid-cols-4"}>
         {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => <DataTableRowSingle row={row} view={view} />)
+          table.getRowModel().rows.map((row) => <DataTableRowSingle key={row.id} row={row} view={view} />)
         ) : (
           <DataTableNoRows columns={columns} />
         )}

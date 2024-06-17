@@ -4,6 +4,8 @@ import { axiosInstance } from "../../config/axios";
 import { endpoints } from "../../config/constants/endpoints";
 
 async function getFileInfo({ fileId }) {
+  console.log({ fileId });
+
   try {
     const { data } = await axiosInstance({
       method: endpoints.getFileInfo.method,
@@ -17,14 +19,14 @@ async function getFileInfo({ fileId }) {
 }
 
 export function useGetFileInfo(data = { fileId: null }) {
-  // console.log({ data });
+  const fileId = data?.fileId;
 
   const {
     data: fileInfo,
     isLoading,
     refetch,
   } = useQuery({
-    enabled: false,
+    enabled: false || !!fileId,
     queryKey: ["file", data.fileId],
     queryFn: () => getFileInfo(data),
   });

@@ -28,10 +28,14 @@ import sleep from "../../../utils/sleep";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../../components/reusables/ui/form";
 import { Button } from "../../../components/reusables/ui/button";
 import { Input } from "../../../components/reusables/ui/input";
+import useFileInfoBox from "../../../hooks/zustand-hooks/useFileInfoBox";
+import { AnimatePresence, motion } from "framer-motion";
 
 // createColumnHelper;
 
 const Home = () => {
+  const fileInfoBox = useFileInfoBox();
+
   const { routeParent } = useRouteParent();
 
   const [gridView, setGridView] = useState(false);
@@ -53,7 +57,24 @@ const Home = () => {
           <SectionWrapper classes="grow py-2">
             <MainDataTable columns={columns} data={files} view={gridView} />
           </SectionWrapper>
-          <FileInfo className="sm:basis-[320px] md:basis-[320px] xl:basis-[335px] bg-brand-25 rounded-lg py-5" />
+          <AnimatePresence initial={false}>
+            {fileInfoBox.isOpen && (
+              <motion.div
+                className="sm:basis-[320px] md:basis-[320px] xl:basis-[335px] bg-brand-25 rounded-lg py-5"
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "320px" }}
+                exit={{
+                  opacity: 0,
+                  width: 0,
+                  transition: {
+                    duration: 0.04,
+                  },
+                }}
+              >
+                <FileInfo />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
         {/* <Test /> */}
       </Container>

@@ -66,7 +66,7 @@ export default function MainDataTable<TData, TValue>({ columns, data, view }: Da
   }
 
   return (
-    <main onDrop={dropHandler} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler} className={dragOver && "relative"}>
+    <main onDrop={dropHandler} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler} className={dragOver ? "relative" : undefined}>
       {dragOver && (
         <div className="absolute inset-0 bg-white/80 z-10 border-[1px] border-brand-500 border-dotted grid place-content-center">
           <p className="text-4xl">Drop your files to Upload</p>

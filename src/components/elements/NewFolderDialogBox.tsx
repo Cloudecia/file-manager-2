@@ -23,6 +23,7 @@ import { z } from "zod";
 import { useCreateFolder } from "../../hooks/tanstack-query-hooks/useCreateFolder";
 import useRouteParent from "../../hooks/useRouteParent";
 import { useState } from "react";
+import { CgSpinnerTwo, CgSpinnerTwoAlt } from "react-icons/cg";
 
 const formSchema = z.object({
   folderName: z.string().min(2, {
@@ -81,8 +82,8 @@ export default function NewFolderDialogBox() {
               )}
             />
             <div className="flex justify-end">
-              <Button type="submit" className="w-auto">
-                Create
+              <Button type="submit" className="w-auto" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting && <CgSpinnerTwoAlt className="mr-2 h-4 w-4 animate-spin [&_*]:text-white" />} Create
               </Button>
             </div>
           </form>

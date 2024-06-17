@@ -9,11 +9,17 @@ import { filesize } from "filesize";
 import fileTypes from "../../../config/constants/fileTypes";
 import FileIcon from "../../elements/FileIcon";
 import { AiOutlineFileUnknown } from "react-icons/ai";
+import { useQueryClient } from "@tanstack/react-query";
+import useFileInfoBox from "../../../hooks/zustand-hooks/useFileInfoBox";
 type Props = {
   className: string;
 };
 
 const Index = ({ className }: Props) => {
+  const fileInfoBox = useFileInfoBox();
+
+  const queryClient = useQueryClient();
+
   const fileIdAdd = useFileId();
 
   const data = useGetFileInfo({ fileId: fileIdAdd.fileId });
@@ -49,6 +55,13 @@ const Index = ({ className }: Props) => {
     },
   ];
 
+  function closeHandler() {
+    fileInfoBox.onClose();
+    // queryClient.removeQueries({
+    //   queryKey: ["file", "root"],
+    // });
+  }
+
   return (
     <aside className={cn(className, "hidden sm:flex flex-col px-4")}>
       {/* file name with close icon */}
@@ -62,7 +75,7 @@ const Index = ({ className }: Props) => {
 
           <span className="max-w-[15ch] whitespace-nowrap text-ellipsis overflow-hidden">{!loading ? name : "Loading..."}</span>
         </div>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={closeHandler}>
           <FaTimes />
         </div>
       </div>
